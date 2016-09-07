@@ -1,0 +1,35 @@
+{% extends "AdminBundle:Default:home.html.twig"%}
+{% block annonces %}
+{%block style %}
+    <link rel="stylesheet" href="{{ asset('bundles/framework/css/annonce.css') }}" type="text/css" media="all" />{%endblock%}
+
+<body>
+        
+        <h1 class="page-header">Mes Annonces</h1>
+       <ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+ <li class="active">Mes Annonces</li>
+</ol>
+
+
+
+<div class="new-offre">
+<div class="container">
+ <div class="col-xs-6 col-xs-offset-4">
+     <div class="bg-form">
+         {{form_row(formNews.titre,{'attr':{'class':'content-form'}})}}
+{% if id is defined%}
+{{form_start(formNews,{'attr':{'action':path('update',{'id':id})}})}}
+{% else%}
+    {{form_start(formNews,{'attr':{'action':path('valid')}})}}
+  {% endif%}
+        
+        {{form_rest(formNews)}}
+        
+        {{form_end(formNews)}}
+    </div>
+</div>
+</div>
+
+    </body>
+    {% endblock %}
